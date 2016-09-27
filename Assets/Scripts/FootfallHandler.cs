@@ -42,7 +42,7 @@ public class FootfallHandler : MonoBehaviour
         {
             var turnSpeed = anim.GetFloat("TurnSpeed");
             var particles = turnSpeed >= 0 ? leftParticles : rightParticles;
-            SimulateFootfall(leftParticles);
+            SimulateFootfall(particles);
         }
     }
 
@@ -52,7 +52,7 @@ public class FootfallHandler : MonoBehaviour
         {
             var turnSpeed = anim.GetFloat("TurnSpeed");
             var particles = turnSpeed >= 0 ? rightParticles : leftParticles;
-            SimulateFootfall(rightParticles);
+            SimulateFootfall(particles);
         }
     }
 
