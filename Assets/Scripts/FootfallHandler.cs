@@ -11,12 +11,14 @@ public class FootfallHandler : MonoBehaviour
     public ParticleSystem rightParticles;
 
     private Rigidbody rigidBody;
+    private Animator anim;
     private bool onMetal;
     private bool onGround;
 
     public void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     public void FixedUpdate()
@@ -38,6 +40,8 @@ public class FootfallHandler : MonoBehaviour
     {
         if (onGround)
         {
+            var turnSpeed = anim.GetFloat("TurnSpeed");
+            var particles = turnSpeed >= 0 ? leftParticles : rightParticles;
             SimulateFootfall(leftParticles);
         }
     }
@@ -46,6 +50,8 @@ public class FootfallHandler : MonoBehaviour
     {
         if (onGround)
         {
+            var turnSpeed = anim.GetFloat("TurnSpeed");
+            var particles = turnSpeed >= 0 ? rightParticles : leftParticles;
             SimulateFootfall(rightParticles);
         }
     }
